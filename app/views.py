@@ -21,9 +21,7 @@ UPLOAD_FOLDER = '.app/static/uploads'
 app.config ['UPLOAD FOLDER']=UPLOAD_FOLDER
 
 
-###
-# Routing for your application.
-###
+
 
 @app.route('/')
 def home():
@@ -41,7 +39,7 @@ def profile():
     form = CreateUser()
     if request.method == "post" and form.validate_on_submit():
         
-        userid  = random.randint(1, 1000)
+        userid  = random.randint(1, 500)
         firstname = form.firstname.data
         lastname = form.lastname.data
         username = form.username.data
@@ -63,7 +61,7 @@ def profile():
     flash_errors(form)
     return render_template('profile.html', form=form)
 
-#handle form errors
+
 def flash_errors(form):
     for field, errors in form.errors.items():
         for error in errors:
